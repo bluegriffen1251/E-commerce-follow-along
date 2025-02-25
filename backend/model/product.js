@@ -39,6 +39,7 @@ const productSchema = new mongoose.Schema(
             type: Date,
             default: Date.now, // Automatically set the creation date
         },
+<<<<<<< HEAD
         cart:[
             {
                 productId: {
@@ -60,3 +61,26 @@ const productSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model("Product", productSchema);
+=======
+        cart: [
+            {
+                productid: {
+                    type: String,
+                    required: [true, "Please provide the product ID"],
+                    unique: true,
+                },
+                quantity: {
+                    type: Number,
+                    required: [true, "Please provide the quantity"],
+                    min: [0, "Quantity cannot be negative"],
+                },
+            },
+        ],
+    },
+    {
+        timestamps: true,
+    }
+);
+
+module.exports = mongoose.model("Product", productSchema);
+>>>>>>> 532cadd (milestone 22)
