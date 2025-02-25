@@ -56,6 +56,7 @@ const userSchema = new mongoose.Schema({
       required: true,
     },
  },
+<<<<<<< HEAD
   cart:[
     {
       productId: {
@@ -66,6 +67,18 @@ const userSchema = new mongoose.Schema({
       quantity:{
         type: Number,
         required:true,
+=======
+  cart: [
+    {
+      productId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Product",
+        required: true,
+      },
+      quantity: {
+        type: Number,
+        required: true,
+>>>>>>> 532cadd (milestone 22)
         min: [1, "Quantity cannot be less than 1"],
         default: 1,
       },
@@ -80,6 +93,7 @@ const userSchema = new mongoose.Schema({
 });
 
 
+<<<<<<< HEAD
 // //  Hash password
 // userSchema.pre("save", async function (next){
 //   if(!this.isModified("password")){
@@ -100,5 +114,27 @@ const userSchema = new mongoose.Schema({
 // userSchema.methods.comparePassword = async function (enteredPassword) {
 //   return await bcrypt.compare(enteredPassword, this.password);
 // };
+=======
+userSchema.pre("save", async function (next){
+  if(!this.isModified("password")){
+    next();
+  }
+
+  this.password = await bcrypt.hash(this.password, 10);
+});
+
+
+// jwt token
+userSchema.methods.getJwtToken = function () {
+  return jwt.sign({ id: this._id}, process.env.JWT_SECRET_KEY,{
+    expiresIn: process.env.JWT_EXPIRE,
+  });
+};
+
+// compare password
+userSchema.methods.comparePassword = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
+>>>>>>> 532cadd (milestone 22)
 
 module.exports = mongoose.model("User", userSchema);
