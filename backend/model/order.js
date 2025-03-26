@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 10702448e227f1f00b26dcf4918cf839e6180d3d
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema(
@@ -59,4 +63,8 @@ const orderSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
+<<<<<<< HEAD
 module.exports = mongoose.model('Order', orderSchema);
+=======
+module.exports = mongoose.model('Order', orderSchema);
+>>>>>>> 10702448e227f1f00b26dcf4918cf839e6180d3d

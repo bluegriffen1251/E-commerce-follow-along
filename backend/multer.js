@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+// backend/multer.js
+>>>>>>> 532cadd (milestone 22)
 
 const multer = require('multer');
 const path = require('path');
@@ -18,7 +22,11 @@ const productsDir = path.join(__dirname, 'products');
 // Multer storage configuration for general uploads
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
+<<<<<<< HEAD
     cb(null, uploadsDir);  
+=======
+    cb(null, uploadsDir);
+>>>>>>> 532cadd (milestone 22)
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
@@ -48,4 +56,8 @@ const pupload = multer({ storage: pstorage });
 module.exports = {
   upload,
   pupload,
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 532cadd (milestone 22)
